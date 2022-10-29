@@ -150,6 +150,7 @@ void insertAtEnd(void)
 	if(head == NULL)
 	{
 		head = newNode;
+		return;
 	}
 
 	temp = head;
