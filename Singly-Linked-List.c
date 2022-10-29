@@ -186,10 +186,8 @@ void reverseList(void)
 	if((head == NULL) || (head->next == NULL))
 		return;
 
-	prev = head;
-	head = head->next;
+	prev = NULL;
 	temp = head;
-	prev->next = NULL;
 
 	while(temp != NULL)
 	{
