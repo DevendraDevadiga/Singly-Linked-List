@@ -199,6 +199,7 @@ void reverseList(void)
 
 	prev = NULL;
 	temp = head;
+	last = temp;
 
 	while(temp != NULL)
 	{
@@ -294,6 +295,9 @@ void swapNodesByKeys(int key1, int key2)
 	if(head == NULL)
 		return;
 
+	if(head->next == NULL)
+		return;
+	
 	temp = head;
 
 	while((temp != NULL) && ((isFirstNodeFound != true) || (isSecNodeFound != true)))
@@ -361,8 +365,16 @@ void swapNodesByKeys(int key1, int key2)
 	{
 		head = node1;
 	}
+	
+	if(node1->next == NULL)
+	{
+		last = node1;
+	}
 
-
+	if(node2->next == NULL)
+	{
+		last = node2;
+	}	
 }
 
 int count(struct node *list)
