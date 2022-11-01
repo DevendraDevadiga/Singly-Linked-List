@@ -7,7 +7,7 @@ struct node {
 	struct node *next;
 };
 
-struct node *head = NULL;
+struct node *head = NULL, *last = NULL;
 struct node *createNode(void);
 void insertAtFirst(void);
 void insertAtEnd(void);
@@ -133,6 +133,11 @@ void insertAtFirst(void)
 		return;
 	}
 
+	if(head == NULL)
+	{
+		head = last = newnode;
+		return;
+	}
 	newNode->next = head;
 	head = newNode;
 }
@@ -149,10 +154,11 @@ void insertAtEnd(void)
 
 	if(head == NULL)
 	{
-		head = newNode;
+		head = last = newNode;
 		return;
 	}
-
+/* If last pointer is not maintained below code cann be used */
+/*
 	temp = head;
 
 	while(temp->next != NULL)
@@ -161,6 +167,11 @@ void insertAtEnd(void)
 	}
 
 	temp->next = newNode;
+*/
+
+	/* if last pointer is maintained */
+	last->next = newnode;
+	last = newnode;
 }
 
 void displayList(void)
@@ -220,7 +231,7 @@ void searchKey(void)
 		if(temp->data == key)
 		{
 			printf("Key found\n");
-			break;
+			return;
 		}
 		temp = temp->next;
 	}
